@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import TextInputView from '~/components/authComponents/TextInputView';
-import {setUser} from '~/redux/Apps/AppStore';
+import {setLogged, setUser} from '~/redux/Apps/AppStore';
 import {UserType} from '~/types/UserType';
 
 // CustomHooks
@@ -73,6 +73,7 @@ const RegisterScreen = ({navigation}) => {
       console.log('user', user);
 
       dispatch(setUser(user));
+      dispatch(setLogged(true));
       navigation.navigate('HomeScreen');
     }
   }

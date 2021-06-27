@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import TextInputView from '~/components/authComponents/TextInputView';
+import {setLogged} from '~/redux/Apps/AppStore';
 
 const LoginScreen = ({navigation}) => {
   const [email, setemail] = useState('email');
@@ -9,10 +10,17 @@ const LoginScreen = ({navigation}) => {
 
   // user from redux
   const user = useSelector(state => state.AppStore.user);
+  const dispatch = useDispatch();
 
   function validateFields() {
     if (user.email == email && user.password == password) {
+      dispatch(setLogged(true));
       navigation.navigate('HomeScreen');
+    } else {
+      Alert.alert(
+        'Error',
+        'You enter wrong creditals !!!. Verify all inputs and try again',
+      );
     }
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
 // Redux
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import {persistor, store} from '~/redux/store';
 // Navigator
@@ -15,9 +15,11 @@ import HomeScreen from './HomeScreen';
 const AuthStack = createStackNavigator();
 
 function AuthStackScreen() {
+  const isLogged = useSelector(state => state.AppStore.isLogged);
   return (
     <AuthStack.Navigator
-      screenOptions={{headerShown: false, gestureEnabled: false}}>
+      screenOptions={{headerShown: false, gestureEnabled: false}}
+      initialRouteName={isLogged ? 'HomeScreen' : 'LoginScreen'}>
       <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
       <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
       <AuthStack.Screen
