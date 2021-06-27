@@ -19,7 +19,7 @@ const formData = values => {
   });
 
   const handleFormValueChange = (key, value) => {
-    console.log('key', key, 'value', value);
+    // console.log('key', key, 'value', value);
 
     setFormValues({
       ...formValues,
