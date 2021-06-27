@@ -9,7 +9,7 @@ import {
 import AnimationView from '~/components/homeComponents/AnimationView';
 import ChartView from '~/components/homeComponents/ChartView';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 20}}>
@@ -19,9 +19,20 @@ const HomeScreen = () => {
         <AnimationView />
 
         {/* future task */}
-        {/* <TouchableOpacity>
-          <Text>Log Out</Text>
-        </TouchableOpacity> */}
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            width: 200,
+            height: 50,
+            backgroundColor: 'blue',
+            borderRadius: 10,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text style={{color: 'white'}}>Log Out</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

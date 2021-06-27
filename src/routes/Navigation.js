@@ -16,10 +16,15 @@ const AuthStack = createStackNavigator();
 
 function AuthStackScreen() {
   return (
-    <AuthStack.Navigator screenOptions={{headerShown: false}}>
+    <AuthStack.Navigator
+      screenOptions={{headerShown: false, gestureEnabled: false}}>
       <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
       <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
-      <AuthStack.Screen name="HomeScreen" component={HomeScreen} />
+      <AuthStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{gestureEnabled: false}}
+      />
     </AuthStack.Navigator>
   );
 }
