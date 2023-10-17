@@ -1,8 +1,9 @@
 name: Monthly Report
 
 on:
-  schedule:
-    - cron: '0 0 1 * *' # Run on the first day of every month
+  pull_request:
+  workflow_dispatch:
+
 jobs:
   monthly-report:
     runs-on: ubuntu-latest
