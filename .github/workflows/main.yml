@@ -1,0 +1,16 @@
+name: Monthly Report
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Run on the first day of every month
+jobs:
+  monthly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send to Slack
+        run: |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#reports\", \"username\": \"webhookbot\", \"text\": \"This is posted to #reports and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
